@@ -1,9 +1,19 @@
+import Axios from "axios";
 import { useState } from "react";
 import "./App.css";
 
 function App() {
   const [material, setMaterial] = useState("");
   const [quantidade, setQuantidade] = useState(0);
+
+  const cadastrar = () => {
+    Axios.post("http://localhost:3001/create", {
+      material: material,
+      quantidade: quantidade,
+    }).then(() => {
+      console.log("sucesso");
+    });
+  };
 
   return (
     <div className="App">
@@ -22,7 +32,7 @@ function App() {
             setQuantidade(event.target.value);
           }}
         />
-        <button>Cadastrar</button>
+        <button onClick={cadastrar}>Cadastrar</button>
       </div>
     </div>
   );
