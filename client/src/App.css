@@ -4,6 +4,11 @@
   justify-content: center;
 }
 
+.App h1 {
+  align-self: center;
+
+}
+
 .information {
   display: flex;
   flex-direction: column;

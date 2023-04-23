@@ -62,6 +62,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Cadastro de Tecidos</h1>
       <div className="information">
         <label>Tecido:</label>
         <input
@@ -89,7 +90,7 @@ function App() {
                 </div>
                 <div className="atualizacao">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="300..."
                     onChange={(event) => {
                       setNovaQuantidade(event.target.value);
