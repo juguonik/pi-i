@@ -20,12 +20,33 @@
   margin: 5px;
 }
 
-.information button {
+button {
   width: 150px;
   height: 50px;
   margin-top: 15px;
 }
 
-.information button:hover {
+button:hover {
   cursor: pointer;
+}
+
+.tecidos {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%
+}
+
+.tecido {
+  width: 600px;
+  height: auto;
+  border: 1px solid black;
+  margin: 10px;
+  display: flex;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.tecido h3 {
+  margin: 20px;
 }

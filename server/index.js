@@ -14,13 +14,13 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,
 });
 
-app.post("/create", (req, res) => {
-  const material = req.body.material;
+app.post("/cadastrar", (req, res) => {
+  const tecido = req.body.tecido;
   const quantidade = req.body.quantidade;
 
   db.query(
-    "INSERT INTO materiais (material, quantidade) VALUES (?,?)",
-    [material, quantidade],
+    "INSERT INTO tecidos (tecido, quantidade) VALUES (?,?)",
+    [tecido, quantidade],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -29,6 +29,16 @@ app.post("/create", (req, res) => {
       }
     }
   );
+});
+
+app.get("/tecidos", (req, res) => {
+  db.query("SELECT * FROM tecidos", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.listen(3001, () => {
