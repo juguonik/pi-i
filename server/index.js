@@ -41,6 +41,22 @@ app.get("/tecidos", (req, res) => {
   });
 });
 
+app.put("/atualizar", (req, res) => {
+  const id = req.body.id;
+  const quantidade = req.body.quantidade;
+  db.query(
+    "UPDATE tecidos SET quantidade = ? WHERE id = ?",
+    [quantidade, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
 app.listen(3001, () => {
   console.log("Servidor rodando na porta 3001");
 });

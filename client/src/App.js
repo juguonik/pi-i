@@ -6,6 +6,8 @@ function App() {
   const [tecido, setTecido] = useState("");
   const [quantidade, setQuantidade] = useState(0);
 
+  const [novaQuantidade, setNovaQuantidade] = useState(0);
+
   const [listaTecidos, setListaTecidos] = useState([]);
 
   const cadastrar = () => {
@@ -26,6 +28,25 @@ function App() {
   const listarTecidos = () => {
     Axios.get("http://localhost:3001/tecidos").then((response) => {
       setListaTecidos(response.data);
+    });
+  };
+
+  const atualizarQuantidade = (id) => {
+    Axios.put("http://localhost:3001/atualizar", {
+      quantidade: novaQuantidade,
+      id: id,
+    }).then((response) => {
+      setListaTecidos(
+        listaTecidos.map((val) => {
+          return val.id === id
+            ? {
+                id: val.id,
+                tecido: val.tecido,
+                quantidade: novaQuantidade,
+              }
+            : val;
+        })
+      );
     });
   };
 
@@ -52,8 +73,26 @@ function App() {
           {listaTecidos.map((val, key) => {
             return (
               <div className="tecido">
-                <h3>Tecido: {val.tecido}</h3>
-                <h3>Quantidade: {val.quantidade}</h3>
+                <div>
+                  <h3>Tecido: {val.tecido}</h3>
+                  <h3>Quantidade: {val.quantidade}</h3>
+                </div>
+                <div className="atualizar">
+                  <input
+                    type="text"
+                    placeholder="300..."
+                    onChange={(event) => {
+                      setNovaQuantidade(event.target.value);
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      atualizarQuantidade(val.id);
+                    }}
+                  >
+                    Atualizar Quantidade
+                  </button>
+                </div>
               </div>
             );
           })}

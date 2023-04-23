@@ -50,3 +50,11 @@ button:hover {
 .tecido h3 {
   margin: 20px;
 }
+
+.atualizar input {
+  width: 50px;
+  height: 50px;
+  font-size: 15px;
+  padding-left: 10px;
+  margin: 5px;
+}
