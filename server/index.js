@@ -57,6 +57,17 @@ app.put("/atualizar", (req, res) => {
   );
 });
 
+app.delete("/excluir/:id", (req, res) => {
+  const id = req.params.id;
+  db.query("DELETE FROM tecidos WHERE id = ?", id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log("Servidor rodando na porta 3001");
 });

@@ -38,8 +38,8 @@ button:hover {
 }
 
 .tecido {
-  width: 600px;
-  height: auto;
+  width: 700px;
+  height: 150px;
   border: 1px solid black;
   margin: 10px;
   display: flex;
@@ -51,10 +51,25 @@ button:hover {
   margin: 20px;
 }
 
-.atualizar input {
+.atualizacao input {
   width: 50px;
-  height: 50px;
+  height: 44px;
   font-size: 15px;
   padding-left: 10px;
   margin: 5px;
 }
+
+.excluir {
+  display: flex;
+  width: 150px;
+  height: 50px;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.excluir button:hover {
+  cursor: pointer;
+}
+
+

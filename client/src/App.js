@@ -50,6 +50,16 @@ function App() {
     });
   };
 
+  const excluirTecido = (id) => {
+    Axios.delete(`http://localhost:3001/excluir/${id}`).then((response) => {
+      setListaTecidos(
+        listaTecidos.filter((val) => {
+          return val.id !== id;
+        })
+      );
+    });
+  };
+
   return (
     <div className="App">
       <div className="information">
@@ -77,7 +87,7 @@ function App() {
                   <h3>Tecido: {val.tecido}</h3>
                   <h3>Quantidade: {val.quantidade}</h3>
                 </div>
-                <div className="atualizar">
+                <div className="atualizacao">
                   <input
                     type="text"
                     placeholder="300..."
@@ -92,6 +102,15 @@ function App() {
                   >
                     Atualizar Quantidade
                   </button>
+                  <div className="excluir">
+                    <button
+                      onClick={() => {
+                        excluirTecido(val.id);
+                      }}
+                    >
+                      Excluir
+                    </button>
+                  </div>
                 </div>
               </div>
             );
